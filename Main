@@ -1,0 +1,41 @@
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+pip install requests
+
+Create a requirements.txt:
+requests
+
+import requests
+
+API_URL = "http://jsonplaceholder.typicode.com"
+
+def get_users():
+    response = requests.get(f"{API_URL}/users")
+    response.raise_for_status()
+    return response.json()
+
+def get_todos(user_id):
+    response = requests.get(f"{API_URL}/todos?userId={user_id}")
+    response.raise_for_status()
+    return response.json()
+
+def is_in_fancode_city(user):
+    lat, lon = user['address']['geo']['lat'], user['address']['geo']['lng']
+    return -40 < float(lat) < 5 and 5 < float(lon) < 100
+
+def calculate_completion_percentage(todos):
+    completed_tasks = sum(1 for todo in todos if todo['completed'])
+    return (completed_tasks / len(todos)) * 100 if todos else 0
+
+def check_fancode_users_completion():
+    users = get_users()
+    fancode_users = [user for user in users if is_in_fancode_city(user)]
+
+    results = {}
+    for user in fancode_users:
+        todos = get_todos(user['id'])
+        completion_percentage = calculate_completion_percentage(todos)
+        results[user['name']] = completion_percentage > 50
+    
+    return results
