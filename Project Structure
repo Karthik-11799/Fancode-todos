@@ -1,0 +1,8 @@
+todo_automation/
+│
+├── tests/
+│   ├── test_todos.py
+│
+├── requirements.txt
+├── README.md
+└── main.py
