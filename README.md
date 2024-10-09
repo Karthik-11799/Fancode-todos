@@ -12,3 +12,8 @@ The project interacts with the following APIs from [jsonplaceholder](https://jso
 - `/users`: Retrieves all users.
 - `/todos`: Retrieves all tasks for specific users.
 
+Project Flow
+API Service Layer: The api_service.py contains functions to fetch users and todos from jsonplaceholder.
+Business Logic Layer: The business_logic.py contains functions to filter users from the "FanCode" city and calculate their completed task percentage.
+Main Program: The main.py script calls the API functions and applies the business logic, printing the results.
+Testing: The test_fancode_users.py script automates the verification process using pytest.
