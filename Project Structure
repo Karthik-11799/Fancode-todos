@@ -1,8 +1,1 @@
-todo_automation/
-│
-├── tests/
-│   ├── test_todos.py
-│
-├── requirements.txt
-├── README.md
-└── main.py
+FanCode_SDET_Assignment/ │ ├── src/ # Core code (API calls, business logic) │ ├── api_service.py │ ├── business_logic.py │ ├── main.py │ ├── tests/ # Test cases │ ├── test_fancode_users.py │ ├── requirements.txt # Project dependencies ├── README.md # Instructions for setup and usage
